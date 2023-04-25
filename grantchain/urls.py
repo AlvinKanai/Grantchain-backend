@@ -19,7 +19,10 @@ from django.urls import path,include, re_path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
@@ -28,6 +31,7 @@ urlpatterns = [
     path('api/accounts/', include('accounts.urls')),
     path('api/ecosystems/', include('ecosystems.urls')),
     path('api/grants/', include('grants.urls')),
+    path('api/contact/', include('contact.urls')),
     path("admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
