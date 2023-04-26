@@ -50,17 +50,17 @@ class Grant(models.Model):
         DEVELOPMENT = 'Development'
         OTHER = 'Other'
 
-    ecosystem = models.ForeignKey(Ecosystem, on_delete=models.DO_NOTHING)
-    slug = models.CharField(max_length=200, unique=True)
     title = models.CharField(max_length=150)
+    slug = models.CharField(max_length=200, unique=True)
     website = models.CharField(max_length=150, blank=True)
+    ecosystem = models.ForeignKey(Ecosystem, on_delete=models.DO_NOTHING)
+    grant_details =models.CharField(max_length=150)
+    project_category = models.CharField(max_length=50, choices=ProjectCategory.choices, default=ProjectCategory.ALL)
+    grant_type = models.CharField(max_length=50, choices=GrantType.choices, default=GrantType.ALL)
+    description = models.TextField(blank=True)
     bounties = models.CharField(max_length=150, blank=True)
     forum = models.CharField(max_length=150, blank=True)
     twitter = models.CharField(max_length=150, blank=True)
-    grant_details =models.CharField(max_length=150)
-    description = models.TextField(blank=True)
-    project_category = models.CharField(max_length=50, choices=ProjectCategory.choices, default=ProjectCategory.ALL)
-    grant_type = models.CharField(max_length=50, choices=GrantType.choices, default=GrantType.ALL)
     main_photo = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
     is_published = models.BooleanField(default=True)
     date_added = models.DateTimeField(default=now, blank=True)

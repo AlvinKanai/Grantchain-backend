@@ -7,7 +7,7 @@ class GrantAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title', )
     list_filter = ('ecosystem', )
     list_editable = ('is_published',)
-    search_fields = ('title', 'description', 'project_category', 'ecosystem', )
+    search_fields = ('title', 'description', 'project_category', )
     list_per_page = 25
 
 admin.site.register(Grant, GrantAdmin)
